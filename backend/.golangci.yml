@@ -1,0 +1,52 @@
+version: "2"
+linters:
+  default: none
+  enable:
+    - errcheck
+    - govet
+    - staticcheck
+    - unused
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - staticcheck
+        text: 'SA1019:'
+    paths:
+      - bin
+      - ^docs$
+      - third_party$
+      - builtin$
+      - examples$
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+formatters:
+  enable:
+    - gci
+    - goimports
+    - gofmt
+    - gofumpt
+    - golines
+  settings:
+    gofmt:
+      rewrite-rules:
+        - pattern: 'interface{}'
+          replacement: 'any'
+    gofumpt:
+      extra-rules: true
+    golines:
+      max-len: 140
+  exclusions:
+    generated: lax
+    paths:
+      - bin
+      - ^docs$
+      - third_party$
+      - builtin$
+      - examples$

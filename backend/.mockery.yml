@@ -1,0 +1,16 @@
+all: false
+dir: 'mocks/{{.InterfaceDirRelative | replaceAll "internal/" "" }}'
+filename: '{{ .InterfaceName | snakecase }}.go'
+force-file-write: true
+formatter: goimports
+log-level: info
+structname: '{{.InterfaceName}}'
+pkgname: '{{.SrcPackageName}}mocks'
+recursive: true 
+require-template-schema-exists: true
+template: testify
+template-schema: '{{.Template}}.schema.json'
+packages:
+  appstorereviewsviewer:
+    config:
+      all: true
